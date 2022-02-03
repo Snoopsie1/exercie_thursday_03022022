@@ -84,7 +84,7 @@ public class UserTest
     public void detailsOnUser_Test_US2()
     {
         String actualUserDetails = userLogic.getUserDetails("Hans", "Hansen");
-        String expectedUserDetails = "Hans Hansen Hemmelig123 40404040 Rolighedsvej ";
+        String expectedUserDetails = "Hans Hansen Hemmelig123 40404040 Rolighedsvej 3";
 
         assertEquals(expectedUserDetails, actualUserDetails);
     }
