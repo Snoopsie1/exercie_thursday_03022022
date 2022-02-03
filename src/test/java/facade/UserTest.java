@@ -19,7 +19,6 @@ public class UserTest
 {
     UserLogic userLogic = new UserLogic();
 
-    @BeforeEach
     void setUp()
     {
         System.out.println("TESTINNNNGGGG");
@@ -50,7 +49,6 @@ public class UserTest
         }
     }
 
-    @AfterEach
     void tearDown() throws SQLException, ClassNotFoundException
     {
         Connection con = DBconnector.connection();
@@ -68,24 +66,28 @@ public class UserTest
     // US 1
     // As a user I want to see a list of all users on the system by their names only
     @Test
-    public void namesOnSystem_Test_US1()
+    public void namesOnSystem_Test_US1() throws SQLException, ClassNotFoundException
     {
+        setUp();
         List<String> actualList = new ArrayList<>();
         List<String> expectedList = userLogic.namesOnSystem();
         actualList.add("Hans Hansen");
 
         assertEquals(expectedList, actualList);
+        tearDown();
     }
 
     //TODO:
     // US 2
     // As a user I want to see details of a specific user from the list
     @Test
-    public void detailsOnUser_Test_US2()
+    public void detailsOnUser_Test_US2() throws SQLException, ClassNotFoundException
     {
+        setUp();
         String actualUserDetails = userLogic.getUserDetails("Hans", "Hansen");
         String expectedUserDetails = "Hans Hansen Hemmelig123 40404040 Rolighedsvej 3";
 
         assertEquals(expectedUserDetails, actualUserDetails);
+        tearDown();
     }
 }
