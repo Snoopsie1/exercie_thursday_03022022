@@ -2,6 +2,6 @@ public class FOOBAR
 {
     public int foobarNum()
     {
-        return 4;
+        return 5;
     }
 }
