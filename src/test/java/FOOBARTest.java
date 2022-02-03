@@ -19,7 +19,7 @@ class FOOBARTest
     public void foobarNumTest()
     {
         int actual = foobar.foobarNum();
-        int expected = 7;
+        int expected = 4;
 
         assertEquals(expected,actual);
     }
