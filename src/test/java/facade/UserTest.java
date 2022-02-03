@@ -19,6 +19,7 @@ public class UserTest
 {
     UserLogic userLogic = new UserLogic();
 
+    @BeforeEach
     void setUp()
     {
         System.out.println("TESTINNNNGGGG");
@@ -49,6 +50,7 @@ public class UserTest
         }
     }
 
+    @AfterEach
     void tearDown() throws SQLException, ClassNotFoundException
     {
         Connection con = DBconnector.connection();
@@ -66,28 +68,39 @@ public class UserTest
     // US 1
     // As a user I want to see a list of all users on the system by their names only
     @Test
-    public void namesOnSystem_Test_US1() throws SQLException, ClassNotFoundException
+    public void namesOnSystem_Test_US1()
     {
-        setUp();
         List<String> actualList = new ArrayList<>();
         List<String> expectedList = userLogic.namesOnSystem();
         actualList.add("Hans Hansen");
 
         assertEquals(expectedList, actualList);
-        tearDown();
     }
 
     //TODO:
     // US 2
     // As a user I want to see details of a specific user from the list
     @Test
-    public void detailsOnUser_Test_US2() throws SQLException, ClassNotFoundException
+    public void detailsOnUser_Test_US2()
     {
-        setUp();
         String actualUserDetails = userLogic.getUserDetails("Hans", "Hansen");
         String expectedUserDetails = "Hans Hansen Hemmelig123 40404040 Rolighedsvej 3";
 
         assertEquals(expectedUserDetails, actualUserDetails);
-        tearDown();
+    }
+
+    //TODO:
+    // US 3
+    // As a user I want to edit my own user details
+    @Test
+    public void editDetailsOnUser_Test_US3()
+    {
+        String pre_actualUserDetails = userLogic.getUserDetails("Hans", "Hansen");
+        userLogic.editUserDetails("Hans", "Hansen", "Torben", "Hansen", "bajerdreng64", "40404040", "BodegaBakken 88");
+        String post_actualUserDetails = userLogic.getUserDetails("Torben", "Hansen");
+
+        String expectedUserDetails = "Torben Hansen bajerdreng64 40404040 BodegaBakken 88";
+
+        assertEquals(expectedUserDetails, post_actualUserDetails);
     }
 }

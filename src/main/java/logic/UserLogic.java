@@ -88,6 +88,27 @@ public class UserLogic
         return null;
     }
 
+    public void editUserDetails(String userFname, String userLname, String newFname, String newLname, String password, String phone, String address)
+    {
+        try
+        {
+            Connection connection = DBconnector.connection();
+            String sql = " UPDATE usertable SET fname=?, lname=?, pw=?, phone=?, address=? WHERE fname=? AND lname=?";
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setString(1, newFname);
+                ps.setString(2, newLname);
+                ps.setString(3, password);
+                ps.setString(4, phone);
+                ps.setString(5, address);
+                ps.setString(6, userFname);
+                ps.setString(7, userLname);
+                ps.executeUpdate();
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
 }
