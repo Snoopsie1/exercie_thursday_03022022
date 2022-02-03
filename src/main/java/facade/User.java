@@ -11,6 +11,14 @@ public class User
     private String phoneNumber;
     private String address;
 
+    //Constructor for getting names
+    public User(String firstName, String lastName)
+    {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    //Constructor for getting all details
     public User(String firstName, String lastName, String password, String phoneNumber, String address)
     {
         this.firstName = firstName;
@@ -20,9 +28,15 @@ public class User
         this.address = address;
     }
 
-    public String[] getFullName()
+    @Override
+    public String toString()
     {
-        return new String[]{this.firstName, this.lastName};
+        return  firstName + " " + lastName + " " + password + " " + phoneNumber + " " + address;
+    }
+
+    public String getFullName()
+    {
+        return this.firstName + " " + this.lastName;
     }
 
     public String getFirstName()
