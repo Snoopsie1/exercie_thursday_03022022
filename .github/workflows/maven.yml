@@ -13,9 +13,6 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
-
-      - name: Build with Maven
-        run: mvn test
       - name: mysql
         uses: mirromutth/mysql-action@v1.1
         with:
@@ -23,3 +20,5 @@ jobs:
           mysql database: 'startcode_test'
           mysql user: ${{ secrets.DB_USER }}
           mysql password: ${{ secrets.DB_PASSWORD }}
+      - name: Build with Maven
+        run: mvn --batch-mode --update-snapshots verify
