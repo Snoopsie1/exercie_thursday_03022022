@@ -70,9 +70,9 @@ public class UserTest
     @Test
     public void namesOnSystem_Test_US1()
     {
-        List<String> actualList = new ArrayList<>();
-        List<String> expectedList = userLogic.namesOnSystem();
-        actualList.add("Hans Hansen");
+        List<String> expectedList = new ArrayList<>();
+        expectedList.add("Hans Hansen");
+        List<String> actualList = userLogic.namesOnSystem();
 
         assertEquals(expectedList, actualList);
     }
